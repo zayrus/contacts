@@ -12,7 +12,7 @@ class App extends Component {
     },
     {
       "id": "michael",
-      "name": "Michael Jackson",
+      "name": "Michael Jackson II",
       "email": "michael@reacttraining.com",
       "avatarURL": "http://localhost:5001/michael.jpg"
     },
@@ -22,11 +22,16 @@ class App extends Component {
       "email": "tyler@reacttraining.com",
       "avatarURL": "http://localhost:5001/tyler.jpg"
     }
-  ]
-}
+    ]
+  }
+  removeContact = (contact) => {
+    this.setState( (state) => ({
+      contacts: state.contacts.filter( (c) => c.id !== contact.id)
+    }))
+  }
   render() {
     return (
-      <ListContacts contacts={this.state.contacts} />   
+      <ListContacts onDeleteContact={ this.removeContact } contacts={this.state.contacts} />   
     )
   }
 }
